@@ -1,0 +1,37 @@
+# Diretório de dependências do Go
+/bin
+/pkg
+
+# Arquivos de saída de compilação
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+
+# Arquivos de cache e temporários do Go
+*.out
+*.log
+
+# Diretório de cache do Go
+/go-build
+
+# Arquivos de configuração do IDE
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+
+# Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
+
+# Diretórios ocultos de controle de versão
+.svn
+.hg
+.CVS
+
+# Arquivos de configuração e logs locais
+.env
+.env.local
+.env.*.local
