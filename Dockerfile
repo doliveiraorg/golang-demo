@@ -1,4 +1,4 @@
-FROM golang:1.24rc2-alpine3.21 AS builder
+FROM quay.io/doliveira1277/golang-demo-base:v1.0 AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN go mod download
 
 RUN go build -o hello-world-api
 
-FROM quay.io/fedora/httpd-24-micro:latest
+FROM quay.io/doliveira1277/golang-demo-runtime:v1.0
 
 WORKDIR /app/
 
