@@ -1,38 +1,20 @@
 package main
 
 import (
-    "github.com/gin-gonic/gin"
-    "net/http"
-    "fmt"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    // Create a Gin router
-    r := gin.Default()
+	r := gin.Default()
 
-    // Define a route for the "Hello World" API
-    fmt.Println("running...")
+        r.Static("/static", "./static")
 
-    r.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "Home",
-        })
-    })
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.html", nil)
+	})
 
-    r.GET("/hello", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "Hello, World!",
-        })
-    })
+	r.LoadHTMLFiles("static/index.html")
 
-
-    r.GET("/foo", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "bar",
-        })
-    })
-
-    // Start the server on port 8080
-    r.Run(":8080")
+	r.Run(":8080") 
 }
 
