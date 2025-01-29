@@ -7,15 +7,13 @@ import (
 )
 
 func main() {
-    // Create a Gin router
     r := gin.Default()
 
-    // Define a route for the "Hello World" API
-    fmt.Println("running...")
+    r.LoadHTMLGlob("templates/*")
 
     r.GET("/", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "Home",
+        c.HTML(http.StatusOK, "index.html", gin.H{
+            "title": "Página Inicial",
         })
     })
 
@@ -25,14 +23,14 @@ func main() {
         })
     })
 
-
     r.GET("/foo", func(c *gin.Context) {
         c.JSON(http.StatusOK, gin.H{
             "message": "bar",
         })
     })
 
-    // Start the server on port 8080
+    fmt.Println("Running...")
+
     r.Run(":8080")
 }
 
