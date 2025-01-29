@@ -6,14 +6,16 @@ COPY . .
 
 RUN go mod download
 
-RUN go build -o hello-world-api
+RUN go build -o demo-app
 
 FROM quay.io/doliveira1277/golang-demo-runtime:v1.0
 
 WORKDIR /app/
 
-COPY --from=builder /app/hello-world-api .
+COPY --from=builder /app/demo-app .
+
+COPY static/ /app/static/
 
 EXPOSE 8080
 
-CMD ["./hello-world-api"]
+CMD ["./demo-app"]

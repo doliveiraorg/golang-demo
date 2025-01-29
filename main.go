@@ -1,36 +1,20 @@
 package main
 
 import (
-    "github.com/gin-gonic/gin"
-    "net/http"
-    "fmt"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
-    r := gin.Default()
+	r := gin.Default()
 
-    r.LoadHTMLGlob("templates/*")
+        r.Static("/static", "./static")
 
-    r.GET("/", func(c *gin.Context) {
-        c.HTML(http.StatusOK, "index.html", gin.H{
-            "title": "Página Inicial",
-        })
-    })
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(200, "index.html", nil)
+	})
 
-    r.GET("/hello", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "Hello, World!",
-        })
-    })
+	r.LoadHTMLFiles("static/index.html")
 
-    r.GET("/foo", func(c *gin.Context) {
-        c.JSON(http.StatusOK, gin.H{
-            "message": "bar",
-        })
-    })
-
-    fmt.Println("Running...")
-
-    r.Run(":8080")
+	r.Run(":8080") 
 }
 
